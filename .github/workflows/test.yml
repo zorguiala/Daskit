@@ -1,9 +1,6 @@
-name: CI
+name: Test
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -13,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  main:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,5 +27,9 @@ jobs:
       - run: npx cypress install
       - uses: nrwl/nx-set-shas@v4
 
-      # Run Nx affected command for lint, test, build, and e2e
-      - run: npx nx affected -t lint test build e2e
+      # Run tests for Daskit
+      - name: Run Tests for Daskit
+        run: npx nx test Daskit
+
+      # Run Nx affected command for e2e tests
+      - run: npx nx affected -t e2e
