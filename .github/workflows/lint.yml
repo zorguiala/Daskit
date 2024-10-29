@@ -1,9 +1,6 @@
-name: CI
+name: Lint
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -13,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  main:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,8 +24,7 @@ jobs:
           cache: 'npm'
 
       - run: npm ci --legacy-peer-deps
-      - run: npx cypress install
-      - uses: nrwl/nx-set-shas@v4
 
-      # Run Nx affected command for lint, test, build, and e2e
-      - run: npx nx affected -t lint test build e2e
+      # Run lint for Daskit
+      - name: Run Lint for Daskit
+        run: npm run lint:Daskit
