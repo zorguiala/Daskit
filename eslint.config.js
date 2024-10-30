@@ -10,6 +10,7 @@ module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     rules: {
+      'no-unused-vars': ['error', { args: 'none' }],
       '@nx/enforce-module-boundaries': [
         'error',
         {
