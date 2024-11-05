@@ -1,0 +1,46 @@
+name: Create PR from Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'create-pr')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create branch
+        run: |
+          ISSUE_NUMBER=${{ github.event.issue.number }}
+          BRANCH_NAME=issue-${ISSUE_NUMBER}
+          git checkout -b $BRANCH_NAME
+
+      - name: Make changes
+        run: |
+          ISSUE_TITLE=${{ github.event.issue.title }}
+          ISSUE_BODY=${{ github.event.issue.body }}
+          echo "// TODO: Implement feature for issue $ISSUE_NUMBER" > issue-${ISSUE_NUMBER}.txt
+          echo "$ISSUE_TITLE" >> issue-${ISSUE_NUMBER}.txt
+          echo "$ISSUE_BODY" >> issue-${ISSUE_NUMBER}.txt
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Create branch for issue #${{ github.event.issue.number }}"
+
+      - name: Push changes
+        run: git push origin $BRANCH_NAME
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Create branch for issue #${{ github.event.issue.number }}
+          branch: $BRANCH_NAME
+          title: ${{ github.event.issue.title }}
+          body: |
+            Closes #${{ github.event.issue.number }}
