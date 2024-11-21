@@ -1,81 +1,66 @@
 # Daskit
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A professional resume landing page built with React, designed to showcase skills, experience, and achievements as a Front-End Engineer. The project includes advanced features such as theme toggles, styled components, and a responsive design.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+---
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Features
 
-## Finish your CI setup
+### **1. Navbar**
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/ByJtHuCSsR)
+- **Two theme toggles**:
+  - **Redux-based toggle**: Manages theme state with Redux and persists to `localStorage`.
+  - **Context API-based toggle**: Manages theme state with Context API and persists to `localStorage`.
 
-## Run tasks
+### **2. Hero Section**
 
-To run the dev server for your app, use:
+- Displays name, photo, title (**Front-End Engineer**), and quick links to LinkedIn and GitHub.
 
-```sh
-npx nx serve Daskit
-```
+### **3. About Me Section**
 
-To create a production bundle:
+- Highlights key skills and expertise in technologies such as React.js, TypeScript, styled-components, Tailwind CSS, and testing frameworks like Jest and Cypress.
 
-```sh
-npx nx build Daskit
-```
+### **4. Skills and Tools Section**
 
-To see all available targets to run for a project, run:
+- Displays a list of technical skills with proficiency levels for frontend technologies, testing tools, and more.
 
-```sh
-npx nx show project Daskit
-```
+### **5. Cards Section**
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+- **Three identical cards** styled using:
+  - **Material UI**
+  - **Tailwind CSS**
+  - **Styled-components**
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### **6. Work Experience and Education Section**
 
-## Add new projects
+- Detailed experience in companies like Toptal and AKEOPLUS, along with educational background.
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+### **7. Contact Section**
 
-Use the plugin's generator to create new projects.
+- A contact form to send emails to **zorguialadinne@outlook.com** using a server-side email API (e.g., Nodemailer).
 
-To generate a new application, use:
+### **8. Theming**
 
-```sh
-npx nx g @nx/react:app demo
-```
+- Dark/Light mode across all components, with theme preference stored in `localStorage` to persist after page reload.
 
-To generate a new library, use:
+---
 
-```sh
-npx nx g @nx/react:lib mylib
-```
+## Technologies Used
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+- **Frontend Framework**: React.js
+- **Styling Libraries**:
+  - Material UI
+  - Tailwind CSS
+  - Styled-components
+- **State Management**: Redux Toolkit, Context API
+- **Email Service**: Nodemailer (or equivalent)
+- **Testing Frameworks**: Jest, Cypress
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Installation
 
-## Install Nx Console
+`npm install`
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+**To start**:
+`npm run dev`
