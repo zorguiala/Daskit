@@ -1,34 +1,44 @@
-name: CI
+name: Run Cypress Tests
 
 on:
   push:
     branches:
-      - main
+      - main # Run tests on push to the main branch
   pull_request:
     branches:
-      - main
-
-permissions:
-  actions: read
-  contents: read
+      - main # Run tests on pull requests to the main branch
 
 jobs:
-  main:
+  cypress:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
+          node-version: 18 # Use the Node.js version compatible with your project
 
-      # Cache node_modules
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
 
-      - run: npm ci --legacy-peer-deps
-      - run: npx cypress install
-      - uses: nrwl/nx-set-shas@v4
+      # Step 4: Start Vite development server
+      - name: Start Vite server
+        run: npm run dev &
+        env:
+          CI: true
 
-      # Run Nx affected command for lint, test, build, and e2e
-      - run: npx nx affected -t lint test build e2e
+      # Step 5: Wait for Vite server to be ready
+      - name: Wait for Vite server
+        run: npx wait-on http://localhost:3000
+
+      # Step 6: Run Cypress tests
+      - name: Run Cypress
+        run: npx cypress run
+        env:
+          CYPRESS_BASE_URL: http://localhost:3000
